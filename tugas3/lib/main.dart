@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // Untuk input numerik
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(kalkulatorBMI());
 }
-
-// ----------------------------------------------------
-// 1. Root Widget dan Tema (diperbarui untuk tema cute)
-// ----------------------------------------------------
 
 class kalkulatorBMI extends StatelessWidget {
   const kalkulatorBMI({super.key});
@@ -15,14 +11,13 @@ class kalkulatorBMI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // Mengatur tema menjadi pink soft yang cute
       theme: ThemeData(
         primarySwatch: Colors.pink,
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
             .copyWith(secondary: Colors.pinkAccent.shade100),
         fontFamily: 'Roboto',
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFF8BBD0), // Soft Pink
+          backgroundColor: Color(0xFFF8BBD0), 
           foregroundColor: Colors.black87,
         ),
       ),
@@ -32,10 +27,6 @@ class kalkulatorBMI extends StatelessWidget {
   }
 }
 
-// ----------------------------------------------------
-// 2. State Widget untuk Tampilan
-// ----------------------------------------------------
-
 class Tampilankalkulatorbmi extends StatefulWidget {
   const Tampilankalkulatorbmi({super.key});
 
@@ -44,17 +35,13 @@ class Tampilankalkulatorbmi extends StatefulWidget {
 }
 
 class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
-  // Controllers untuk input teks
   final _beratcontroller = TextEditingController();
   final _tinggicontroller = TextEditingController();
 
-  // Variabel state untuk hasil
   double? _hasilbmi;
   String _komentar = "Masukkan Nilai";
-  // Variabel baru untuk Jenis Kelamin (Requirement 3)
-  String _jenisKelamin = 'Pria'; // Default
+  String _jenisKelamin = 'Pria'; 
 
-  // Fungsi untuk menghitung BMI (diperbarui dengan logika gender)
   void hasil() {
     final double berat = double.tryParse(_beratcontroller.text) ?? 0;
     final double tinggiInCm = double.tryParse(_tinggicontroller.text) ?? 0;
@@ -65,9 +52,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
         final double bmi = berat / (tinggiInM * tinggiInM);
         _hasilbmi = bmi;
 
-        // Logika BMI berdasarkan Jenis Kelamin (Requirement 3)
-        if (_jenisKelamin == 'Pria') {
-          // Kategori BMI untuk Pria
+       if (_jenisKelamin == 'Pria') {
           if (bmi < 18.5) {
             _komentar = "Cowok Ceking! Makan yang banyak dan sehat ya.";
           } else if (bmi < 24.5) {
@@ -78,7 +63,6 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             _komentar = "Obesitas Bro! AYO DIETT KETAT!";
           }
         } else if (_jenisKelamin == 'Wanita') {
-          // Kategori BMI untuk Wanita
           if (bmi < 18.5) {
             _komentar = "Cewek Ceking! Butuh nutrisi nih. Jangan skip makan.";
           } else if (bmi < 25) {
@@ -96,14 +80,13 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
     });
   }
 
-  // Fungsi untuk me-reset data (Requirement 1)
   void resetData() {
     setState(() {
       _beratcontroller.clear();
       _tinggicontroller.clear();
       _hasilbmi = null;
       _komentar = "Masukkan Nilai";
-      _jenisKelamin = 'Pria'; // Reset juga jenis kelamin ke default
+      _jenisKelamin = 'Pria'; 
     });
   }
 
@@ -114,10 +97,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
     super.dispose();
   }
 
-  // ----------------------------------------------------
-  // 3. Tampilan UI (diperbarui dengan styling dan reset button)
-  // ----------------------------------------------------
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,11 +109,10 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0), // Padding di sekeliling
+        padding: const EdgeInsets.all(24.0), 
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            // Input Berat Badan
             const Text("Berat Badan (Kg)",
                 style: TextStyle(fontSize: 16, color: Colors.pink)),
             const SizedBox(height: 8),
@@ -144,7 +123,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
               decoration: InputDecoration(
                 labelText: "0",
                 hintStyle: TextStyle(color: Colors.pink.shade200),
-                prefixIcon: const Icon(Icons.scale, color: Colors.pinkAccent), // Icon (Requirement 2)
+                prefixIcon: const Icon(Icons.scale, color: Colors.pinkAccent), 
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(color: Colors.pink),
@@ -157,7 +136,6 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             ),
             const SizedBox(height: 20),
 
-            // Input Tinggi Badan
             const Text("Tinggi Badan (Cm)",
                 style: TextStyle(fontSize: 16, color: Colors.pink)),
             const SizedBox(height: 8),
@@ -168,7 +146,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
               decoration: InputDecoration(
                 labelText: "0",
                 hintStyle: TextStyle(color: Colors.pink.shade200),
-                prefixIcon: const Icon(Icons.height, color: Colors.pinkAccent), // Icon (Requirement 2)
+                prefixIcon: const Icon(Icons.height, color: Colors.pinkAccent), 
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(color: Colors.pink),
@@ -181,13 +159,11 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             ),
             const SizedBox(height: 20),
 
-            // Pilihan Jenis Kelamin (Requirement 3)
             const Text("Jenis Kelamin",
                 style: TextStyle(fontSize: 16, color: Colors.pink)),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Radio Pria
                 Expanded(
                   child: RadioListTile<String>(
                     title: const Text('Pria'),
@@ -196,14 +172,13 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
                     onChanged: (String? value) {
                       setState(() {
                         _jenisKelamin = value!;
-                        _hasilbmi = null; // Clear result on gender change
+                        _hasilbmi = null; 
                         _komentar = "Pilih 'Hitung BMI' lagi";
                       });
                     },
                     activeColor: Colors.pink,
                   ),
                 ),
-                // Radio Wanita
                 Expanded(
                   child: RadioListTile<String>(
                     title: const Text('Wanita'),
@@ -212,7 +187,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
                     onChanged: (String? value) {
                       setState(() {
                         _jenisKelamin = value!;
-                        _hasilbmi = null; // Clear result on gender change
+                        _hasilbmi = null;
                         _komentar = "Pilih 'Hitung BMI' lagi";
                       });
                     },
@@ -223,17 +198,15 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             ),
             const SizedBox(height: 20),
 
-            // Tombol Hitung dan Reset
             Row(
               children: [
-                // Tombol Hitung BMI
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: hasil,
-                    icon: const Icon(Icons.calculate), // Icon (Requirement 2)
+                    icon: const Icon(Icons.calculate),
                     label: const Text("Hitung BMI"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink, // Soft Pink
+                      backgroundColor: Colors.pink,
                       foregroundColor: Colors.white,
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
@@ -244,14 +217,13 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
                 ),
                 const SizedBox(width: 10),
 
-                // Tombol Reset (Requirement 1)
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: resetData,
-                    icon: const Icon(Icons.refresh), // Icon (Requirement 2)
+                    icon: const Icon(Icons.refresh), 
                     label: const Text("Reset"),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.pink.shade200, // Lighter Pink
+                      backgroundColor: Colors.pink.shade200, 
                       foregroundColor: Colors.black87,
                       padding: const EdgeInsets.symmetric(vertical: 15),
                       shape: RoundedRectangleBorder(
@@ -264,7 +236,6 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             ),
             const SizedBox(height: 30),
 
-            // Area Hasil Perhitungan
             const Center(
                 child: Text("HASIL",
                     style: TextStyle(
@@ -275,7 +246,7 @@ class _TampilankalkulatorbmiState extends State<Tampilankalkulatorbmi> {
             Container(
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
-                color: Colors.pink.shade50, // Background soft
+                color: Colors.pink.shade50, 
                 borderRadius: BorderRadius.circular(15),
                 boxShadow: [
                   BoxShadow(
