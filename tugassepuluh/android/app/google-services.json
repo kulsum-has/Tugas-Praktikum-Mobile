@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "643975226702",
+    "project_id": "tugassepuluh-5db0f",
+    "storage_bucket": "tugassepuluh-5db0f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643975226702:android:fc6d3d06f7f91c57332a1f",
+        "android_client_info": {
+          "package_name": "com.example.tugassepuluh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgyXZkwisZW2MJp-RX6FxfZQmXUvRdyl0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
