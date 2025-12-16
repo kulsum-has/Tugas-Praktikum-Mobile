@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "864430767794",
+    "project_id": "tugassembilan-8d8c3",
+    "storage_bucket": "tugassembilan-8d8c3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864430767794:android:c491645782af060a6793ab",
+        "android_client_info": {
+          "package_name": "com.example.tugassembilan"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL5i2glyDtH665NByunCgpyL4-zNYbrx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
